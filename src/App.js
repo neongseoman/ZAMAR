@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import FileUpload from "./components/file-upload/file-upload.component";
 
 function App() {
+  const [newUserInfo, setNewUserInfo] = useState({
+    profileImages: []
+  });
+
+  const updateUploadedFiles = (files) =>
+      setNewUserInfo({ ...newUserInfo, profileImages: files });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    //logic to create new user...
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <FileUpload
+              accept=".jpg,.png,.jpeg"
+              label="Profile Image(s)"
+              multiple
+              updateFilesCb={updateUploadedFiles}
+          />
+          <button type="submit">Create New User</button>
+        </form>
+
+      </div>
   );
 }
 
