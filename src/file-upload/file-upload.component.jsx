@@ -90,8 +90,12 @@ const FileUpload = ({
 
 
             <FilePreviewContainer>
-                <span
-                style={{marginLeft: "15px"}}>Uploaded Image</span>
+                <span style={{
+                        marginLeft: "15px",
+                        fontWeight: "bold"
+                    }}>
+                    Uploaded Image
+                </span>
                 <PreviewList>
                     {Object.keys(files).map((fileName, index) => {
                         let file = files[fileName];
