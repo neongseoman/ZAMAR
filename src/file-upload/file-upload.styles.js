@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+export const Container=styled.div`
+display:flex;`
+
 export const FileUploadContainer = styled.section`
   position: relative;
   margin: 25px 0 15px;
@@ -10,6 +13,8 @@ export const FileUploadContainer = styled.section`
   flex-direction: column;
   align-items: center;
   background-color: white;
+  flex:2;
+  height:10vh;
 `;
 
 export const FormField = styled.input`
@@ -36,11 +41,11 @@ export const InputLabel = styled.label`
   color: black;
   left: 0;
   position: absolute;
-`;
+  border: 1px solid black;`;
 
 export const DragDropText = styled.p`
   font-weight: bold;
-  letter-spacing: 2.2px;
+  // letter-spacing: 2.2px;
   margin-top: 0;
   text-align: center;
 `;
@@ -48,7 +53,7 @@ export const DragDropText = styled.p`
 export const UploadFileBtn = styled.button`
   box-sizing: border-box;
   appearance: none;
-  background-color: transparent;
+  // background-color: transparent;
   border: 2px solid #3498db;
   cursor: pointer;
   font-size: 1rem;
@@ -67,9 +72,9 @@ export const UploadFileBtn = styled.button`
   width: 45%;
   display: flex;
   align-items: center;
-  padding-right: 0;
+  // padding-right: 0;
   justify-content: center;
-
+  //
   &:after {
     content: "";
     position: absolute;
@@ -84,20 +89,6 @@ export const UploadFileBtn = styled.button`
     transition: width 250ms ease-in-out;
   }
 
-  i {
-    font-size: 22px;
-    margin-right: 5px;
-    border-right: 2px solid;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
 
   @media only screen and (max-width: 500px) {
     width: 70%;
@@ -135,11 +126,16 @@ export const FilePreviewContainer = styled.article`
   span {
     font-size: 14px;
   }
-`;
+  height:100vh;
+  overflow:scroll;
+  overflow-x:hidden;
+  flex:1;
+  border: 2px dotted lightgray;
+  `;
 
 export const PreviewList = styled.section`
-  display: flex;
-  flex-wrap: wrap;
+  // display: flex;
+  // flex-wrap: wrap;
   margin-top: 10px;
 
   @media only screen and (max-width: 400px) {
@@ -168,18 +164,17 @@ export const FileMetaData = styled.div`
   }
 `;
 
-export const RemoveFileIcon = styled.i`
+export const RemoveFileIcon = styled.span`
   cursor: pointer;
-
   &:hover {
     transform: scale(1.3);
   }
-`;
+   `;
 
 export const PreviewContainer = styled.section`
-  padding: 0.25rem;
-  width: 20%;
-  height: 120px;
+  // padding: 0.25rem;
+  width: 100%;
+  height: 100%;
   border-radius: 6px;
   box-sizing: border-box;
 

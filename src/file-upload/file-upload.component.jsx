@@ -10,8 +10,11 @@ import {
     PreviewList,
     FileMetaData,
     RemoveFileIcon,
-    InputLabel
+    InputLabel,
+    Container,
 } from "./file-upload.styles";
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+
 
 const KILO_BYTES_PER_BYTE = 1000;
 const DEFAULT_MAX_FILE_SIZE_IN_BYTES = 500000;
@@ -67,12 +70,12 @@ const FileUpload = ({
     };
 
     return (
-        <>
+        <Container>
             <FileUploadContainer>
-                <InputLabel>{label}</InputLabel>
+                {/*<InputLabel>{label}</InputLabel>*/}
                 <DragDropText>Drag and drop your files anywhere or</DragDropText>
                 <UploadFileBtn type="button" onClick={handleUploadBtnClick}>
-                    <i className="fas fa-file-upload" />
+                    {/*<i className="fas fa-file-upload" />*/}
                     <span> Upload {otherProps.multiple ? "files" : "a file"}</span>
                 </UploadFileBtn>
                 <FormField
@@ -84,8 +87,11 @@ const FileUpload = ({
                     {...otherProps}
                 />
             </FileUploadContainer>
+
+
             <FilePreviewContainer>
-                <span>To Upload</span>
+                <span
+                style={{marginLeft: "15px"}}>Uploaded Image</span>
                 <PreviewList>
                     {Object.keys(files).map((fileName, index) => {
                         let file = files[fileName];
@@ -104,9 +110,10 @@ const FileUpload = ({
                                         <aside>
                                             <span>{convertBytesToKB(file.size)} kb</span>
                                             <RemoveFileIcon
-                                                className="fas fa-trash-alt"
                                                 onClick={() => removeFile(fileName)}
-                                            />
+                                            >
+                                                <DeleteOutlineIcon/>
+                                            </RemoveFileIcon>
                                         </aside>
                                     </FileMetaData>
                                 </div>
@@ -115,7 +122,7 @@ const FileUpload = ({
                     })}
                 </PreviewList>
             </FilePreviewContainer>
-        </>
+        </Container>
     );
 };
 

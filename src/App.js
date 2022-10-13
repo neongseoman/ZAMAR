@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FileUpload from "./components/file-upload/file-upload.component";
+import FileUpload from "./file-upload/file-upload.component";
 
 function App() {
   const [newUserInfo, setNewUserInfo] = useState({
@@ -23,7 +23,7 @@ function App() {
               multiple
               updateFilesCb={updateUploadedFiles}
           />
-          <button type="submit">Create New User</button>
+          {/*<button type="submit">Create New User</button>*/}
         </form>
 
       </div>
