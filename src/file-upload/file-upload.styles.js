@@ -5,7 +5,7 @@ display:flex;`
 
 export const FileUploadContainer = styled.section`
   position: relative;
-  margin: 25px 0 15px;
+  margin: 0 0 15px;
   border: 2px dotted lightgray;
   padding: 35px 20px;
   border-radius: 6px;
@@ -131,7 +131,7 @@ export const FilePreviewContainer = styled.article`
   overflow-x:hidden;
   flex:1;
   border: 2px dotted lightgray;
-  `;
+  border-radius: 6px;`;
 
 export const PreviewList = styled.section`
   // display: flex;
@@ -185,6 +185,9 @@ export const PreviewContainer = styled.section`
       display: flex;
     }
   }
+  // ${FileMetaData} {
+  //     display: flex;
+  //   }
 
   & > div:first-of-type {
     height: 100%;
