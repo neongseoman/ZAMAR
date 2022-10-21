@@ -5,15 +5,14 @@ import {
     DragDropText,
     UploadFileBtn,
     FilePreviewContainer,
-    ImagePreview,
     PreviewContainer,
     PreviewList,
-    FileMetaData,
-    RemoveFileIcon,
-    InputLabel,
-    Container,
+    Container, BoardBoard,
 } from "./file-upload.styles";
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import PreviewContainer2 from "./PreviewContainer2";
+import Board from "./practice/Board";
+// import FileUploadContainer2 from "./fileUploadContainer2";
+// import FilePreviewContainer2 from "./filePreviewContainer2";
 
 
 const KILO_BYTES_PER_BYTE = 1000;
@@ -34,8 +33,11 @@ const FileUpload = ({
                         maxFileSizeInBytes = DEFAULT_MAX_FILE_SIZE_IN_BYTES,
                         ...otherProps
                     }) => {
+
+
     const fileInputField = useRef(null);
     const [files, setFiles] = useState({});
+
 
     const handleUploadBtnClick = () => {
         fileInputField.current.click();
@@ -89,13 +91,14 @@ const FileUpload = ({
                     {...otherProps}
                 />
             </FileUploadContainer>
+            {/*<BoardBoard>*/}
+
+            {/*<Board/>*/}
+            {/*</BoardBoard>*/}
 
 
             <FilePreviewContainer>
-                <span style={{
-                    marginLeft: "13px",
-                    fontWeight: "bold"
-                }}>
+                <span style={{marginLeft: "13px", fontWeight: "bold"}}>
                     Uploaded Image
                 </span>
                 <PreviewList>
@@ -106,37 +109,22 @@ const FileUpload = ({
                         let isImageFile = file.type.split("/")[0] === "image";
                         return (
                             <PreviewContainer key={fileName}>
-                                <div>
-                                    {isImageFile && (
-                                        <ImagePreview
-                                            src={URL.createObjectURL(file)}
-                                            alt={`file preview ${index}`}
-                                        />
-                                    )}
-                                    <FileMetaData isImageFile={isImageFile}>
-                                        <span>No.{index + 1}</span>
-                                        <span>{file.name}</span>
-                                        <aside>
-                                            {
-                                                convertBytesToKB(file.size)>999
-                                                    ?
-                                                    <span>{convertKiloToMB(file.size)} Mb</span>
-                                                    :
-                                                    <span>{convertBytesToKB(file.size)} Kb</span>
-                                            }
-                                            <RemoveFileIcon
-                                                onClick={() => removeFile(fileName)}
-                                            >
-                                                <DeleteOutlineIcon/>
-                                            </RemoveFileIcon>
-                                        </aside>
-                                    </FileMetaData>
-                                </div>
+                                <PreviewContainer2
+                                    isImageFile={isImageFile}
+                                    file={file}
+                                    index={index}
+                                    convertKiloToMB={convertKiloToMB}
+                                    convertBytesToKB={convertBytesToKB}
+                                    removeFile={removeFile}
+                                    fileName={fileName}
+                                />
                             </PreviewContainer>
                         );
                     })}
                 </PreviewList>
             </FilePreviewContainer>
+
+
         </Container>
     );
 };

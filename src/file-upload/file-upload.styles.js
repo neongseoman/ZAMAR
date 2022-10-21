@@ -17,6 +17,12 @@ export const FileUploadContainer = styled.section`
   height:10vh;
 `;
 
+export const BoardBoard=styled.div`
+// position:relative;
+// flex:column;
+
+border:1px solid black;`
+
 export const FormField = styled.input`
   font-size: 18px;
   display: block;
@@ -29,6 +35,7 @@ export const FormField = styled.input`
   right: 0;
   bottom: 0;
   opacity: 0;
+  // border:1px solid black;
 
   &:focus {
     outline: none;
